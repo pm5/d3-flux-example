@@ -1,0 +1,21 @@
+{
+  "name": "d3-flux-example",
+  "version": "0.0.1",
+  "description": "Experimenting using [Flux](https://github.com/enaqx/awesome-react#flux) with D3.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "d3",
+    "react",
+    "example"
+  ],
+  "author": "Pomin Wu <pomin5@gmail.com> (https://github.com/pm5)",
+  "license": "MIT",
+  "dependencies": {
+    "d3": "^3.5.6",
+    "debug": "^2.2.0"
+  },
+  "devDependencies": {}
+}
