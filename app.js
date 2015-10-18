@@ -12,6 +12,21 @@ window.app = (function () {
         .text(function (d) { return d.content })
       messages.exit()
         .remove()
+
+      selection.call(chatWindowTitle(settings))
+    }
+    return draw
+  }
+
+  function chatWindowTitle (settings) {
+    function draw (selection) {
+      var title = selection.selectAll('div.title')
+        .data([settings.messages.length])
+      title
+        .text(function (d) { return 'Latest ' + d + ' messages' })
+      title.enter().append('div')
+        .classed('title', true)
+        .text(function (d) { return 'Latest ' + d + ' messages' })
     }
     return draw
   }
@@ -64,8 +79,6 @@ window.app = (function () {
     function draw (selection) {
       selection.append('h1')
         .text('Chatroom')
-      selection.append('h2')
-        .text('Latest 5 messages')
       var chatCountContainer = selection.append('div')
         .classed('chatCount', true)
       var chatWindowContainer = selection.append('div')
