@@ -62,6 +62,7 @@ window.app = (function () {
         .text(function (d) { return d.label })
         .on('click', function (d) { return d.onClick() })
 
+      // use dispatcher
       function handleSubmit () {
         window.dispatcher.action({
           type: 'addMessage',
@@ -94,6 +95,7 @@ window.app = (function () {
           messages: window.chatlog.recentHistory(5)
         }))
         chatBoxContainer.call(chatBox())
+        // redraw on store update
         chatlog.on('update.app', update.bind(null, selection))
       })(selection)
     }
