@@ -2,7 +2,7 @@ window.app = (function () {
   function chatWindow (settings) {
     function draw (selection) {
       var messages = selection.selectAll('div.message')
-        .data(window.chatlog.recentHistory(), function (d) { return d.id })
+        .data(settings.messages, function (d) { return d.id })
       messages
         .classed('message', true)
         .text(function (d) { return d.content })
@@ -55,7 +55,9 @@ window.app = (function () {
         .classed('chatBox', true)
 
       ;(function update (selection) {
-        chatWindowContainer.call(chatWindow())
+        chatWindowContainer.call(chatWindow({
+          messages: window.chatlog.recentHistory()
+        }))
         chatBoxContainer.call(chatBox())
         chatlog.on('update.app', update.bind(null, selection))
       })(selection)
@@ -66,4 +68,3 @@ window.app = (function () {
   d3.select('#app')
     .call(app())
 })()
-
