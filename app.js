@@ -87,7 +87,7 @@ window.app = (function () {
       var chatBoxContainer = selection.append('div')
         .classed('chatBox', true)
 
-      ;(function update (selection) {
+      function update (selection) {
         chatCountContainer.call(chatCount({
           count: window.chatlog.count()
         }))
@@ -97,7 +97,8 @@ window.app = (function () {
         chatBoxContainer.call(chatBox())
         // redraw on store update
         chatlog.on('update.app', update.bind(null, selection))
-      })(selection)
+      }
+      update(selection)
     }
     return draw
   }
