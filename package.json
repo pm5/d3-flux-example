@@ -4,7 +4,8 @@
   "description": "Experimenting using [Flux](https://github.com/enaqx/awesome-react#flux) with D3.js",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server"
   },
   "keywords": [
     "d3",
@@ -16,5 +17,7 @@
   "dependencies": {
     "d3": "^3.5.6"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "live-server": "^0.8.1"
+  }
 }
