@@ -1,4 +1,5 @@
 window.app = (function () {
+  // cf React (stateless) component
   function chatWindow (settings) {
     function draw (selection) {
       var messages = selection.selectAll('div.message')
@@ -15,6 +16,8 @@ window.app = (function () {
     return draw
   }
 
+  // D3.js is not very good at making control UI...
+  // The keypoint here is to use dispatcher to manipulate data.
   function chatBox (settings) {
     function draw (selection) {
       var messageBox = selection.selectAll('textarea.messageBox')
@@ -45,6 +48,7 @@ window.app = (function () {
     return draw
   }
 
+  // cf React data container
   function app (settings) {
     function draw (selection) {
       selection.append('h1')
