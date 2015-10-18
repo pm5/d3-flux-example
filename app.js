@@ -49,6 +49,8 @@ window.app = (function () {
     function draw (selection) {
       selection.append('h1')
         .text('Chatroom')
+      selection.append('h2')
+        .text('Latest 5 messages')
       var chatWindowContainer = selection.append('div')
         .classed('chatWindow', true)
       var chatBoxContainer = selection.append('div')
@@ -56,7 +58,7 @@ window.app = (function () {
 
       ;(function update (selection) {
         chatWindowContainer.call(chatWindow({
-          messages: window.chatlog.recentHistory()
+          messages: window.chatlog.recentHistory(5)
         }))
         chatBoxContainer.call(chatBox())
         chatlog.on('update.app', update.bind(null, selection))
