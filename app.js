@@ -16,6 +16,17 @@ window.app = (function () {
     return draw
   }
 
+  function chatCount (settings) {
+    function draw (selection) {
+      var count = selection.selectAll('div')
+        .data([settings.count])
+        .text(function (d) { return 'Total ' + d + ' messages' })
+      count.enter().append('div')
+        .text(function (d) { return 'Total ' + d + ' messages' })
+    }
+    return draw
+  }
+
   // D3.js is not very good at making control UI...
   // The keypoint here is to use dispatcher to manipulate data.
   function chatBox (settings) {
@@ -55,12 +66,17 @@ window.app = (function () {
         .text('Chatroom')
       selection.append('h2')
         .text('Latest 5 messages')
+      var chatCountContainer = selection.append('div')
+        .classed('chatCount', true)
       var chatWindowContainer = selection.append('div')
         .classed('chatWindow', true)
       var chatBoxContainer = selection.append('div')
         .classed('chatBox', true)
 
       ;(function update (selection) {
+        chatCountContainer.call(chatCount({
+          count: window.chatlog.count()
+        }))
         chatWindowContainer.call(chatWindow({
           messages: window.chatlog.recentHistory(5)
         }))
